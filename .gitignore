@@ -1,0 +1,15 @@
+# Input & output — never pushed to the public repo
+Notes material/
+HTML Notes/
+
+# Local-only working files
+CLAUDE.md
+docs/superpowers/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+desktop.ini
+*.swp
+.vscode/
+.idea/
