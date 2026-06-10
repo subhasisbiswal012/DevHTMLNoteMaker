@@ -1,0 +1,11 @@
+# Code owners for DevHTMLNoteMaker
+#
+# The repo owner must approve every pull request opened by another
+# contributor before it can be merged into `main`. Combined with the
+# branch ruleset (PR required, no direct pushes), this guarantees that
+# outside changes always pass through Subhasis's review.
+#
+# The owner can still self-merge their own PRs without approval because
+# the "Repository admin" role is on the ruleset's pull-request bypass list.
+
+* @subhasisbiswal012
