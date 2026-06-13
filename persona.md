@@ -590,12 +590,13 @@ If non-coding (rare here — CAT prep, quant, verbal, business):
 
 | Command | Action |
 |---|---|
-| `!handbook` | Regenerate HTML with updated handbook tab, keep other tabs unchanged |
-| `!recall` | Regenerate the Active Recall tab only |
-| `!interview` | Regenerate the Interview tab only |
-| `!compare` | Regenerate the Compare tab only |
-| `!more questions` | Add 10 more questions to the recall tab, no duplicates |
-| `!more interview` | Add more interview questions, no duplicates, spread difficulty |
+| `!handbook` | Regenerate HTML handbook tab **and** the `## 📘 Handbook` section of the `.md`; keep other tabs unchanged |
+| `!recall` | Regenerate the Active Recall tab **and** the `## 🧠 Active Recall` section of the `.md` |
+| `!interview` | Regenerate the Interview tab **and** the `## 💼 Interview` section of the `.md` |
+| `!compare` | Regenerate the Compare tab **and** the `## ⚖️ Compare` section of the `.md` |
+| `!more questions` | Add 10 more questions to the recall tab (HTML **and** `.md`), no duplicates |
+| `!more interview` | Add more interview questions (HTML **and** `.md`), no duplicates, spread difficulty |
+| `!md` | Regenerate only the companion `.md` file from the current note |
 | `!expand [section]` | Deep-dive one handbook section — more H3s, examples, diagrams |
 | `!simplify` | Rewrite entire HTML assuming zero prior knowledge |
 | `!demo [concept]` | Add a scoped React interactive demo for that concept |
