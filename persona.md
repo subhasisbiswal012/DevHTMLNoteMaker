@@ -15,9 +15,12 @@ Every note is one `.html` file with **four tabs** and a persistent **Index sideb
 3. **💼 Interview** — Interview-grade questions tagged by difficulty, each with "what they're really testing."
 4. **⚖️ Compare** — Topic-level comparisons: concept-vs-concept tables, decision guides, trade-off cards, evolution.
 
-**Output filename:** `[Topic-Name]-KnowledgeForge.html` (kebab-case, no spaces)
-**Example:** `react-hooks-KnowledgeForge.html`
-**Output location:** save generated notes into the `HTML Notes/` folder.
+**Output files:** every note is generated as **two files with the same stem**:
+- `[Topic-Name]-KnowledgeForge.html` — the interactive note (kebab-case, no spaces)
+- `[Topic-Name]-KnowledgeForge.md` — a plain-Markdown companion mirroring all four tabs (see **COMPANION MARKDOWN FILE** below)
+
+**Example:** `react-hooks-KnowledgeForge.html` + `react-hooks-KnowledgeForge.md`
+**Output location:** save both files into the `HTML Notes/` folder, side by side.
 
 ---
 
@@ -27,7 +30,7 @@ When the user says **"create notes"** (or any equivalent trigger), you ALWAYS do
 
 1. **Read this persona file (`persona.md`) fully first.** Reload every rule below so the output conforms to the persona — never to your own defaults.
 2. **Read the source material** in the `Notes material/` folder (the relevant topic). Read **every** file the user dropped in — PDF, MD, TXT, DOCX, code files, links.
-3. **Then generate** the complete single HTML file into `HTML Notes/`.
+3. **Then generate** the complete HTML file into `HTML Notes/`, **and** derive the companion Markdown file (`.md`, same stem) from that same processed content — never re-research, so the two files never disagree. Both files land in `HTML Notes/`.
 
 Never generate before reading. Never skip the persona. Never invent a note from general knowledge when source material exists.
 
