@@ -106,6 +106,72 @@ background-size: 40px 40px;
 
 ---
 
+# COMPANION MARKDOWN FILE
+
+Alongside every HTML note, generate a plain-Markdown companion that mirrors the
+**same content** as a clean, parseable source document. It is consumed later to
+build full-subject active-recall sets, interview-question sets, and short
+notebooks — so it must be faithful, complete, and free of HTML/JS/CSS.
+
+## File
+
+- Filename: `[Topic-Name]-KnowledgeForge.md` — same stem as the HTML, `.md` extension.
+- Location: `HTML Notes/`, beside the `.html`.
+- Derived from the **same processed material** as the HTML in the same run. Same
+  facts, same question count, same sections — a translation, never a re-research
+  and never a summary.
+
+## Structure
+
+Start with YAML frontmatter, then one H1, then four H2 sections mirroring the tabs:
+
+```
+---
+title: <Topic>
+type: knowledgeforge-note
+source: <Notes material files used, comma-separated>
+generated: <YYYY-MM-DD>
+---
+
+# <Topic>
+
+## 📘 Handbook
+## 🧠 Active Recall
+## 💼 Interview
+## ⚖️ Compare
+```
+
+Inside each section, keep the same logical order as the HTML (Handbook H2
+sections in sequence, Quick Reference last within Handbook; Compare ends each
+comparison with its `📌 Bottom line`).
+
+## Translation rules (HTML construct → Markdown)
+
+| HTML construct | Markdown equivalent |
+|---|---|
+| Inline SVG diagram | A ` ```mermaid ` fenced block **plus** the figcaption as an italic line beneath it. |
+| Hidden recall answer | **Plain Q then A, always visible.** Question line, then `**Answer:**` directly below. No `<details>`. |
+| Hidden interview answer | Question line, then `**Strong Answer:**` below, keeping the `🎯 What they're really testing:` and `↪ Likely follow-up:` lines. |
+| Recall type badge (`[DEF]`/`[APPLY]`/`[WHY]`/`[COMPARE]`/`[SEQUENCE]`/`[GOTCHA]`/`[DRAW]`) | Bold tag on the question line, e.g. `**Q01 · [APPLY]**`. |
+| Interview difficulty (`[JUNIOR]`/`[MID]`/`[SENIOR]`) | Bold tag on the question line, e.g. `**IQ01 · [MID]**`. |
+| Standard code block | Fenced code block with language hint. |
+| Wrong-vs-Right panels | Two labeled fenced blocks: an `❌ Wrong` block then a `✅ Right` block. |
+| Terminal/output block | Fenced block (` ```text ` or ` ```bash `). |
+| Callout tip / warning / rule / worth-knowing | Blockquote with the same emoji prefix: `> 💡` / `> ⚠️` / `> 📌` / `> 📎`. |
+| `📎 Worth knowing` addition | Keep the `📎` prefix so it stays distinguishable from source content. |
+| Table / Quick Reference | Native Markdown table. |
+| React/Babel/highlight.js/CSS/fonts | **Omit entirely** — Markdown is pure content. An interactive React demo degrades to a code block plus an italic caption describing what the demo lets the reader do. |
+
+## Faithfulness
+
+- Same source-faithfulness as the HTML: nothing invented beyond the source
+  except clearly-marked `📎 Worth knowing` additions.
+- Same number of recall and interview questions as the HTML note.
+- Include every Compare form the HTML note used (concept tables, decision guides,
+  trade-off cards, evolution), each ending with its `📌 Bottom line`.
+
+---
+
 # HTML PAGE STRUCTURE
 
 ```
