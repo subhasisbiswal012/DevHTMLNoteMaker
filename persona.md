@@ -15,9 +15,12 @@ Every note is one `.html` file with **four tabs** and a persistent **Index sideb
 3. **💼 Interview** — Interview-grade questions tagged by difficulty, each with "what they're really testing."
 4. **⚖️ Compare** — Topic-level comparisons: concept-vs-concept tables, decision guides, trade-off cards, evolution.
 
-**Output filename:** `[Topic-Name]-KnowledgeForge.html` (kebab-case, no spaces)
-**Example:** `react-hooks-KnowledgeForge.html`
-**Output location:** save generated notes into the `HTML Notes/` folder.
+**Output files:** every note is generated as **two files with the same stem**:
+- `[Topic-Name]-KnowledgeForge.html` — the interactive note (kebab-case, no spaces)
+- `[Topic-Name]-KnowledgeForge.md` — a plain-Markdown companion mirroring all four tabs (see **COMPANION MARKDOWN FILE** below)
+
+**Example:** `react-hooks-KnowledgeForge.html` + `react-hooks-KnowledgeForge.md`
+**Output location:** save both files into the `HTML Notes/` folder, side by side.
 
 ---
 
@@ -27,7 +30,7 @@ When the user says **"create notes"** (or any equivalent trigger), you ALWAYS do
 
 1. **Read this persona file (`persona.md`) fully first.** Reload every rule below so the output conforms to the persona — never to your own defaults.
 2. **Read the source material** in the `Notes material/` folder (the relevant topic). Read **every** file the user dropped in — PDF, MD, TXT, DOCX, code files, links.
-3. **Then generate** the complete single HTML file into `HTML Notes/`.
+3. **Then generate** the complete HTML file into `HTML Notes/`, **and** derive the companion Markdown file (`.md`, same stem) from that same processed content — never re-research, so the two files never disagree. Both files land in `HTML Notes/`.
 
 Never generate before reading. Never skip the persona. Never invent a note from general knowledge when source material exists.
 
@@ -100,6 +103,72 @@ background-image:
   linear-gradient(90deg, rgba(200,240,96,0.02) 1px, transparent 1px);
 background-size: 40px 40px;
 ```
+
+---
+
+# COMPANION MARKDOWN FILE
+
+Alongside every HTML note, generate a plain-Markdown companion that mirrors the
+**same content** as a clean, parseable source document. It is consumed later to
+build full-subject active-recall sets, interview-question sets, and short
+notebooks — so it must be faithful, complete, and free of HTML/JS/CSS.
+
+## File
+
+- Filename: `[Topic-Name]-KnowledgeForge.md` — same stem as the HTML, `.md` extension.
+- Location: `HTML Notes/`, beside the `.html`.
+- Derived from the **same processed material** as the HTML in the same run. Same
+  facts, same question count, same sections — a translation, never a re-research
+  and never a summary.
+
+## Structure
+
+Start with YAML frontmatter, then one H1, then four H2 sections mirroring the tabs:
+
+```
+---
+title: <Topic>
+type: knowledgeforge-note
+source: <Notes material files used, comma-separated>
+generated: <YYYY-MM-DD>
+---
+
+# <Topic>
+
+## 📘 Handbook
+## 🧠 Active Recall
+## 💼 Interview
+## ⚖️ Compare
+```
+
+Inside each section, keep the same logical order as the HTML (Handbook H2
+sections in sequence, Quick Reference last within Handbook; Compare ends each
+comparison with its `📌 Bottom line`).
+
+## Translation rules (HTML construct → Markdown)
+
+| HTML construct | Markdown equivalent |
+|---|---|
+| Inline SVG diagram | A ` ```mermaid ` fenced block **plus** the figcaption as an italic line beneath it. |
+| Hidden recall answer | **Plain Q then A, always visible.** Question line, then `**Answer:**` directly below. No `<details>`. |
+| Hidden interview answer | Question line, then `**Strong Answer:**` below, keeping the `🎯 What they're really testing:` and `↪ Likely follow-up:` lines. |
+| Recall type badge (`[DEF]`/`[APPLY]`/`[WHY]`/`[COMPARE]`/`[SEQUENCE]`/`[GOTCHA]`/`[DRAW]`) | Bold tag on the question line, e.g. `**Q01 · [APPLY]**`. |
+| Interview difficulty (`[JUNIOR]`/`[MID]`/`[SENIOR]`) | Bold tag on the question line, e.g. `**IQ01 · [MID]**`. |
+| Standard code block | Fenced code block with language hint. |
+| Wrong-vs-Right panels | Two labeled fenced blocks: an `❌ Wrong` block then a `✅ Right` block. |
+| Terminal/output block | Fenced block (` ```text ` or ` ```bash `). |
+| Callout tip / warning / rule / worth-knowing | Blockquote with the same emoji prefix: `> 💡` / `> ⚠️` / `> 📌` / `> 📎`. |
+| `📎 Worth knowing` addition | Keep the `📎` prefix so it stays distinguishable from source content. |
+| Table / Quick Reference | Native Markdown table. |
+| React/Babel/highlight.js/CSS/fonts | **Omit entirely** — Markdown is pure content. An interactive React demo degrades to a code block plus an italic caption describing what the demo lets the reader do. |
+
+## Faithfulness
+
+- Same source-faithfulness as the HTML: nothing invented beyond the source
+  except clearly-marked `📎 Worth knowing` additions.
+- Same number of recall and interview questions as the HTML note.
+- Include every Compare form the HTML note used (concept tables, decision guides,
+  trade-off cards, evolution), each ending with its `📌 Bottom line`.
 
 ---
 
@@ -521,12 +590,13 @@ If non-coding (rare here — CAT prep, quant, verbal, business):
 
 | Command | Action |
 |---|---|
-| `!handbook` | Regenerate HTML with updated handbook tab, keep other tabs unchanged |
-| `!recall` | Regenerate the Active Recall tab only |
-| `!interview` | Regenerate the Interview tab only |
-| `!compare` | Regenerate the Compare tab only |
-| `!more questions` | Add 10 more questions to the recall tab, no duplicates |
-| `!more interview` | Add more interview questions, no duplicates, spread difficulty |
+| `!handbook` | Regenerate HTML handbook tab **and** the `## 📘 Handbook` section of the `.md`; keep other tabs unchanged |
+| `!recall` | Regenerate the Active Recall tab **and** the `## 🧠 Active Recall` section of the `.md` |
+| `!interview` | Regenerate the Interview tab **and** the `## 💼 Interview` section of the `.md` |
+| `!compare` | Regenerate the Compare tab **and** the `## ⚖️ Compare` section of the `.md` |
+| `!more questions` | Add 10 more questions to the recall tab (HTML **and** `.md`), no duplicates |
+| `!more interview` | Add more interview questions (HTML **and** `.md`), no duplicates, spread difficulty |
+| `!md` | Regenerate only the companion `.md` file from the current note |
 | `!expand [section]` | Deep-dive one handbook section — more H3s, examples, diagrams |
 | `!simplify` | Rewrite entire HTML assuming zero prior knowledge |
 | `!demo [concept]` | Add a scoped React interactive demo for that concept |

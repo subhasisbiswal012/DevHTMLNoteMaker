@@ -8,7 +8,7 @@ Drop your material in, get back one `.html` file you can open in any browser —
 
 ## What it produces
 
-Every note is **one self-contained `.html` file** with four tabs and a sticky Index:
+Every note is generated as **two files**: one self-contained `.html` with four tabs and a sticky Index (below), plus a companion **`.md`** that mirrors the same four tabs as plain, parseable Markdown — handy for feeding into a full-subject recall set, interview set, or short notebook later.
 
 | Tab | What's inside |
 |---|---|
@@ -32,7 +32,7 @@ Every note is **one self-contained `.html` file** with four tabs and a sticky In
 
 1. **Drop material** into your `Notes material/` folder (PDF, Markdown, text, code, links).
 2. Tell KnowledgeForge to **create notes** for the topic.
-3. It reads the persona, reads your material, and writes a `[Topic-Name]-KnowledgeForge.html` into your `HTML Notes/` folder.
+3. It reads the persona, reads your material, and writes both `[Topic-Name]-KnowledgeForge.html` and a companion `[Topic-Name]-KnowledgeForge.md` into your `HTML Notes/` folder.
 4. Open the file in a browser. Study, recall, prep, compare.
 
 The full behaviour is defined in [`persona.md`](./persona.md) — the KnowledgeForge system prompt. Point your Claude project at it.
