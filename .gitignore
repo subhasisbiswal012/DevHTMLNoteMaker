@@ -5,6 +5,7 @@ HTML Notes/
 # Local-only working files
 CLAUDE.md
 docs/superpowers/
+.firecrawl/
 
 # OS / editor cruft
 Thumbs.db
