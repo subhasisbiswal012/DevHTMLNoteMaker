@@ -2,7 +2,7 @@
 
 > **KnowledgeForge** — turn raw study material into a single, self-contained, interactive HTML note built for deep understanding and long-term retention of **coding & software-development** topics.
 
-Drop your material in, get back one `.html` file you can open in any browser — no build step, no server, no dependencies to install. It bundles a visual handbook, active-recall questions, real interview questions, and topic comparisons into one file.
+Drop your material in, get back one `.html` file you can open in any browser — no build step, no server, no dependencies to install. It bundles a visual handbook, active-recall questions, real interview questions, and topic comparisons into one file — every piece of it rated `★` for interview weight and tagged for what you actually have to memorize.
 
 ---
 
@@ -12,10 +12,10 @@ Every note is generated as **two files**: one self-contained `.html` with four t
 
 | Tab | What's inside |
 |---|---|
-| 📘 **Handbook** | Example-first explanations, inline SVG diagrams, syntax-highlighted code, Wrong-vs-Right panels, and a sticky **Index sidebar** with scroll-spy navigation. |
-| 🧠 **Active Recall** | Retrieval questions (`DEF` / `APPLY` / `WHY` / `COMPARE` / `SEQUENCE` / `GOTCHA` / `DRAW`) with per-question show/hide answers and a live progress counter. |
-| 💼 **Interview** | Real interview-grade questions tagged `Junior` / `Mid` / `Senior`, each with **"what they're really testing"** and likely follow-ups. |
-| ⚖️ **Compare** | Topic-level comparisons: concept-vs-concept tables, "when to use what" decision guides, trade-off cards, and old-way→new-way evolution. |
+| 📘 **Handbook** | Example-first explanations, inline SVG diagrams, syntax-highlighted code, Wrong-vs-Right panels, and a sticky **Index sidebar** with scroll-spy navigation. Every section opens with a **priority line** — `★` interview weight, retention tag, and one line on why interviewers care — and the tab closes with a **🎯 Priority Ladder** revision table. |
+| 🧠 **Active Recall** | Retrieval questions (`DEF` / `APPLY` / `WHY` / `COMPARE` / `SEQUENCE` / `GOTCHA` / `DRAW`) with per-question show/hide answers, `★` weights, and a live progress counter. |
+| 💼 **Interview** | Interview-grade questions **sorted most-asked first**, tagged `Junior` / `Mid` / `Senior` with a `★` weight, **"what they're really testing"**, answered follow-ups, and a **🎙 Real-world** badge on questions genuinely asked in the wild. |
+| ⚖️ **Compare** | Topic-level comparisons: concept-vs-concept tables, "when to use what" decision guides, trade-off cards, and old-way→new-way evolution — each weighted, highest-yield pair first. |
 
 ### Highlights
 
@@ -24,6 +24,9 @@ Every note is generated as **two files**: one self-contained `.html` with four t
 - **Real diagrams, never ASCII** — flowcharts, pipelines, trees, request/response, nesting models as inline SVG.
 - **React only when it earns it** — interactive demos and simulators load React via CDN *only* when hands-on beats a static diagram; otherwise notes stay lightweight vanilla JS.
 - **Subtle motion by default**, richer animation on request, with `prefers-reduced-motion` respected.
+- **★ Priority layer** — every section, question, and comparison carries a 5-star interview weight, honestly spread (no note gets to be all-`★★★★★`).
+- **Memorize vs understand vs just-know-of** — `🧠` what has to come back cold, `📖` what only needs the mechanism, `🗄` what exists but is almost never used in real code (and why).
+- **🎙 Real-world questions** — the ones actually asked for the topic, badged so they never masquerade as source material; no invented company attributions.
 - **📎 Worth-knowing additions** — must-know essentials beyond your source, always clearly marked.
 
 ---
