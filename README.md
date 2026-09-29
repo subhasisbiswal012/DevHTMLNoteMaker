@@ -1,42 +1,37 @@
 # DevHTMLNoteMaker
 
-> **KnowledgeForge** — turn raw study material into a single, self-contained, interactive HTML note built for deep understanding and long-term retention of **coding & software-development** topics.
+> **KnowledgeForge** — turn raw course material into **lean, interview-ready study notes** for **coding & software-development** topics (primarily .NET / ASP.NET Core backend).
 
-Drop your material in, get back one `.html` file you can open in any browser — no build step, no server, no dependencies to install. It bundles a visual handbook, active-recall questions, real interview questions, and topic comparisons into one file — every piece of it rated `★` for interview weight and tagged for what you actually have to memorize.
+KnowledgeForge **edits** your material rather than transcribing it. It keeps only what a backend interviewer would ask or a real job would use. It adds the real-world layer courses skip: deployment, API behaviour, testing, troubleshooting and design judgement. Then it connects the topic to the rest of the subject.
 
 ---
 
 ## What it produces
 
-Every note is generated as **two files**: one self-contained `.html` with four tabs and a sticky Index (below), plus a companion **`.md`** that mirrors the same four tabs as plain, parseable Markdown — handy for feeding into a full-subject recall set, interview set, or short notebook later.
+Every note is **two files**:
 
-| Tab | What's inside |
+| File | What's inside |
 |---|---|
-| 📘 **Handbook** | Example-first explanations, inline SVG diagrams, syntax-highlighted code, Wrong-vs-Right panels, and a sticky **Index sidebar** with scroll-spy navigation. Every section opens with a **priority line** — `★` interview weight, retention tag, and one line on why interviewers care — and the tab closes with a **🎯 Priority Ladder** revision table. |
-| 🧠 **Active Recall** | Retrieval questions (`DEF` / `APPLY` / `WHY` / `COMPARE` / `SEQUENCE` / `GOTCHA` / `DRAW`) with per-question show/hide answers, `★` weights, and a live progress counter. |
-| 💼 **Interview** | Interview-grade questions **sorted most-asked first**, tagged `Junior` / `Mid` / `Senior` with a `★` weight, **"what they're really testing"**, answered follow-ups, and a **🎙 Real-world** badge on questions genuinely asked in the wild. |
-| ⚖️ **Compare** | Topic-level comparisons: concept-vs-concept tables, "when to use what" decision guides, trade-off cards, and old-way→new-way evolution — each weighted, highest-yield pair first. |
+| **`.md`** — the source of truth | Core idea → topic sections ordered by real usage → best practices → troubleshooting checklist → quick reference + "facts to memorize" → 10–15 concise interview Q&As. Written first, reviewed and edited by you. |
+| **`.html`** — built from the reviewed `.md` | 📘 **Notes** tab: a 🧭 **mind map** linking the topic to its neighbours (fullscreen + zoom), a sticky Index sidebar with scroll-spy, highlighted code, and small flow diagrams. 💼 **Interview** tab: the Q&As as reveal cards, each linking back to its section. |
 
 ### Highlights
 
-- **Single file, zero install** — open the `.html` anywhere; works offline after first load.
-- **Dark, focused design** — custom theme, `Syne` + `DM Mono` fonts, grid texture.
-- **Real diagrams, never ASCII** — flowcharts, pipelines, trees, request/response, nesting models as inline SVG.
-- **React only when it earns it** — interactive demos and simulators load React via CDN *only* when hands-on beats a static diagram; otherwise notes stay lightweight vanilla JS.
-- **Subtle motion by default**, richer animation on request, with `prefers-reduced-motion` respected.
-- **★ Priority layer** — every section, question, and comparison carries a 5-star interview weight, honestly spread (no note gets to be all-`★★★★★`).
-- **Memorize vs understand vs just-know-of** — `🧠` what has to come back cold, `📖` what only needs the mechanism, `🗄` what exists but is almost never used in real code (and why).
-- **🎙 Real-world questions** — the ones actually asked for the topic, badged so they never masquerade as source material; no invented company attributions.
-- **📎 Worth-knowing additions** — must-know essentials beyond your source, always clearly marked.
+- **Filtered, not transcribed:** every source item must pass one test — *would an interviewer ask it, or would I use it on the job?*
+- **Real-world first:** production deployment, APIs, testing and failure modes, not just the lecture demo.
+- **Connected:** a mind map ties each topic to the ones it depends on.
+- **Say it once:** no repeated summary layers; short prose plus code.
+- **Single file, zero install:** open the `.html` anywhere; dark `Syne` + `DM Mono` theme; works offline after first load.
+- **Optional extras on request:** Active Recall, Compare tables, React demos.
 
 ---
 
 ## How it works
 
-1. **Drop material** into your `Notes material/` folder (PDF, Markdown, text, code, links).
-2. Tell KnowledgeForge to **create notes** for the topic.
-3. It reads the persona, reads your material, and writes both `[Topic-Name]-KnowledgeForge.html` and a companion `[Topic-Name]-KnowledgeForge.md` into your `HTML Notes/` folder.
-4. Open the file in a browser. Study, recall, prep, compare.
+1. **Drop material** anywhere and point KnowledgeForge at it (PDF, Markdown, text, code).
+2. Say **create notes**. It reads the persona and every source, filters them, and writes the **`.md`**.
+3. **Review and edit** the `.md`.
+4. It builds the **`.html`** from your reviewed `.md`, faithfully, with nothing re-added.
 
 The full behaviour is defined in [`persona.md`](./persona.md) — the KnowledgeForge system prompt. Point your Claude project at it.
 
